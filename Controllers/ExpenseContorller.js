@@ -35,14 +35,12 @@ const fetchExpenses = async (req, res) => {
       success:true,
       data: userData?.expenses
     });
-    
   } catch (error) {
     return res.status(500).json({
         message:"oops something went wrong",
         error: error,
         success:false
     })
-    
   }
 };
 const deletExpenses = async (req, res) => {
@@ -61,15 +59,12 @@ const deletExpenses = async (req, res) => {
         success:true,
         data: userData?.expenses
     })
-    
   } catch (error) {
     return res.status(500).json({
         message:"oops something went wrong",
         error:error,
         success:false
-
     })
-    
   }
 };
 

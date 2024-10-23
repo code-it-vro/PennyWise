@@ -2,8 +2,6 @@ const { fetchExpenses, addExpenses, deletExpenses } = require("../Controllers/Ex
 
 const router = require("express").Router();
 
-
-
 router.get('/', fetchExpenses)
 router.post('/', addExpenses)
 router.delete('/:expenseId', deletExpenses)

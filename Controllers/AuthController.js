@@ -6,7 +6,6 @@ const signup = async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    // Check if the user already exists
     const existingUser = await userModel.findOne({ email });
     if (existingUser) {
       return res.status(409).json({
@@ -15,20 +14,15 @@ const signup = async (req, res) => {
       });
     }
 
-    // Create a new user and hash the password
     const newUser = new userModel({ name, email, password });
     newUser.password = await bcrypt.hash(password, 10);
-
-    // Save the new user to the database
     await newUser.save();
 
-    // Respond with success
     res.status(201).json({
       message: "User signup successful",
       success: true,
     });
   } catch (error) {
-    // Handle any errors
     res.status(500).json({
       message: "Internal server error",
       success: false,
